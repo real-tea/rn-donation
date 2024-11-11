@@ -1,20 +1,19 @@
 import React , { useState , useRef } from "react";
-import { Pressable , Text } from "react-native";   
+import { View , Text } from "react-native";   
 import Style from "./style";
 import PropTypes from "prop-types";
 import { horizontalScale } from "../../assets/styles/scaling";
 
-const Tab = (props) => {
+const Badge = (props) => {
     const [width , setWidth ] = useState(0)
     const textRef = useRef(null)
-    const paddingHorizontal = 33;
+    const paddingHorizontal = 10;
     const tabWidth = {
         width : horizontalScale(paddingHorizontal * 2 + width)
     }
     return(
-        <Pressable 
-            disabled = { props.isInactive } 
-            style={[Style.tab , props.isInactive && Style.inactiveTab , tabWidth]}
+        <View 
+            style={[Style.badge , tabWidth]}
             onPress = { props.onPress }
         >
             <Text
@@ -22,21 +21,15 @@ const Tab = (props) => {
                     setWidth(event.nativeEvent.lines[0].width)
                 }}
                 ref = { textRef }
-                style={[Style.title , props.isInactive && Style.inactiveTitle]}>
+                style={[Style.title]}>
                     {props.title}
             </Text>
-        </Pressable>
+        </View>
     )
 }
-Tab.default = {
-    isInactive : false,
-    onPress : () => {}
-}
 
-Tab.propTypes = {
+Badge.propTypes = {
     title : PropTypes.string.isRequired,
-    isInactive : PropTypes.bool,
-    onPress : PropTypes.func
 }
 
-export default Tab;
+export default Badge;
