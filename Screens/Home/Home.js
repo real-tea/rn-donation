@@ -9,18 +9,13 @@ import { horizontalScale } from "../../assets/styles/scaling";
 import Badge from "../../components/Badge/Badge";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import Search from "../../components/Search/Search";
 
 
 const Home = () => {
     return (
         <SafeAreaView style={[globalStyle.backgroundWhite , globalStyle.flex]}>
-            <Header title={"Akash Singh"} type={1}/>
-            <View>
-            <Tab title={"Highlights"}/>
-            <Tab title={"Highlights"} isInactive={true}/>
-            <Badge title="recommended"/>
-            <FontAwesomeIcon icon={faSearch}/>
-            </View>
+            <Search/>
         </SafeAreaView>
     )
 }
